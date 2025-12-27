@@ -22,7 +22,9 @@ function generateCalendar(date) {
     const year = date.getFullYear();
     const month = date.getMonth();
 
-    const firstDay = new Date(year, month, 1).getDay();
+let firstDay = new Date(year, month, 1).getDay(); // 0 = dimanche
+firstDay = firstDay === 0 ? 6 : firstDay - 1; // Décaler pour que lundi = 0, dimanche = 6
+    
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     calendar.innerHTML = '';
